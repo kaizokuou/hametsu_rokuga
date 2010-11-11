@@ -1,0 +1,30 @@
+!!!
+%html
+  %title 破滅録画
+  =stylesheet_link_tag "common"
+  %div#all
+    %h1=link_to "破滅録画", :controller => :home, :action => :index
+    %div
+      %h3=link_to "録画リスト", :controller => :home, :action => :list
+    %div
+      %hr
+    %div
+      %h3 追加
+      =form_tag :action => :register do
+        %p
+          %b パス
+          %br
+          =text_field_tag "path"
+        %p
+          %b 作品名
+          %br
+          =text_field_tag "name"
+        %p=submit_tag "登録"
+      %h3 一覧
+      %table
+        %tbody  
+          -@list.each do |l|
+            %tr
+              %td=link_to h(l.name), :action => :dir, :id => l.id
+              %td=h l.path
+              %td=link_to "destroy", :action => :destroy, :id => l.id

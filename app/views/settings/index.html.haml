@@ -1,0 +1,33 @@
+%h2 設定変更
+=form_tag :action => :update do
+  %p
+    %b Nyaa Urls(スペース区切り)
+    %br
+    =text_field_tag "nyaa_urls",Misc.json_to_line(@setting.nyaa_urls),:size => 120
+  %p
+    %b ダウンロードディレクトリ
+    %br
+    =text_field_tag "download_directory", @setting.download_directory, :size => 80
+  %p
+    %b 開始ポート
+    %br
+    =text_field_tag "start_port",@setting.start_port
+  %p
+    %b 並列数
+    %br
+    開始ポートから開始ポート + 並列数のポートまでを開放する必要があります(現状実装が酷すぎるので 1 推奨)
+    %br
+    =text_field_tag "concurrency_count",@setting.concurrency_count
+  %p
+    %b After Command
+    %br
+    =text_area_tag "after_command",Misc.json_to_area(@setting.after_command),:size => "74x7"
+  %p
+    %b 新着フィード作成ディレクトリ
+    %br
+    =text_field_tag "new_feed",@setting.new_feed,:size => 80
+  %p
+    %b 新着フィード URL プレフィックス
+    %br
+    =text_field_tag "new_prefix",@setting.new_prefix,:size => 80
+  %p=submit_tag

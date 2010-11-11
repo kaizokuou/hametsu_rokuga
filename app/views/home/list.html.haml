@@ -1,0 +1,32 @@
+%div#notice
+  =h flash[:notice]
+%div
+  %h3 定期購読
+  =form_tag :action => :subscription do
+    %p
+      %label 検索条件
+      =text_field_tag "regular"
+      =submit_tag "購読"
+  -@subs.each do |e|
+    %p
+      =h e.regular
+      \:
+      =link_to "Force", :action => :force, :key => CGI.escape(e.id)
+      =link_to "Destroy", :action => :destroy_subs, :key => e.id
+%div
+  %h3 録画予約
+  -@records.each do |e|
+    %p
+      =h(e.title)
+      =link_to "予約取り消し", :action => :destroy_record, :id => e.id
+  %p
+    =link_to "録画予約全取消", :action => "stop_record_all"
+    =link_to "録画予約強制完了（大量予約発行時に使用）", :action => "force_complete_all"
+%div
+  %h3 録画済
+  -@comps.each do |e|
+    -if e.index_names.index("hide_list") == nil
+      %p
+        =h(e.title)
+        \:
+        =link_to "Retry", :action => :retry, :key => CGI.escape(e.id)

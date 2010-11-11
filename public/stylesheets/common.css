@@ -1,0 +1,23 @@
+#all, .all{
+  padding-left:10%;
+  padding-right:10%;
+}
+
+#notice{
+  color:green;
+}
+
+#error{
+  color:red;
+}
+
+a{
+  color:blue;
+}
+
+@media screen and (max-device-width: 480px){
+  #all, .all{
+    padding-left:0px;
+    padding-right:0px;
+  }
+}

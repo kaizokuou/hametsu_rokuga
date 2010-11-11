@@ -1,0 +1,12 @@
+!!!
+%html
+  %title 破滅録画 作品別フィード一覧
+  =stylesheet_link_tag "common"
+  %div#all
+    %h1 破滅録画 作品別フィード一覧
+    %table
+      %tbody  
+        -@list.each do |l|
+          %tr
+            %td=link_to h(l.name), :action => :dir, :id => l.id
+    %h3=link_to "新着はこちら", :action => :new

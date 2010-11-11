@@ -1,0 +1,11 @@
+!!!
+%html
+  %title 破滅録画 - 設定編集
+  =stylesheet_link_tag "common"
+  %div#all
+    %h1=link_to "破滅録画", :controller => :home, :action => :index
+    %div
+      %h3=link_to "録画リスト", :controller => :home, :action => :list
+    %div
+      %hr
+    =yield

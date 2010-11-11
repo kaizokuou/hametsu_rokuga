@@ -1,0 +1,18 @@
+%div
+  %h3 検索
+  =form_tag :action => :search do
+    %p
+      %label 検索条件
+      =text_field_tag "id"
+      =submit_tag "検索"
+  %h3 定期購読
+  =form_tag :action => :subscription do
+    %p
+      %label 検索条件
+      =text_field_tag "regular"
+      =submit_tag "購読"
+%div
+  %h3 録画する
+  -@es.each do |e|
+    %p
+      =link_to h(e.title), :action => :record, :key => e.id if e.index_names.index("complete_list") == nil and e.index_names.index("record_list") == nil
